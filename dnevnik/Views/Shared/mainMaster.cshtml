@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/mainMaster.css")">
+    <title>Dnevnik.ru</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-logo">
+            <a title="это мой дневник" href="#">Dnevnik.ru</a>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <nav class="nav-menu">
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="#">Ученикам</a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">
+                        <a href="#">Расписания</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#">Домашние задания</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#">Родителям</a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">
+                        <a href="#">Успеваемость</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#">Родительские собрания</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#">Учителям</a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">
+                        <a href="#">Управление классами</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#">Управление уроками</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#">Наша школа</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main">
+        <div>
+            Контент
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <div class="footer">
+        Dnevnik.ru 2018
+    </div>
+</body>
+
+</html>

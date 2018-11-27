@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre');
+
+* {
+    box-sizing: border-box;
+}
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, ul, li{
+                 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+body{
+    background-color:#FFFFFF;
+}
+
+.header {
+    display:flex;
+    background-color: #333333;
+    padding-left:30px;
+    color:#FFFFFF;
+}
+
+.header-logo{
+    font-family:"Averia Serif Libre";
+    font-size:24px;
+    font-weight: bold;
+    padding:15px 0px;
+}
+.header-logo a{
+    font-family:inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color:inherit;
+    text-decoration: none;
+}
+
+.header-logo a:hover{
+    color:rgb(231, 210, 210);
+}
+
+.nav-menu{
+    
+    box-shadow:0 3px 11px rgba(24, 23, 23, 0.25);
+}
+
+.menu{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left:30px;
+}
+
+.menu li{
+    list-style-type: none;
+    display:block;
+}
+
+.menu a {
+    display:block;
+    text-decoration: none;
+}
+
+.menu > li > a{
+    color:rgb(148, 148, 150);
+    font-size:18px;
+    font-family: "Averia Serif Libre";
+    font-weight:bold;
+    padding:12px 9px;
+}
+
+.menu > li > a:first-child{
+    padding-left:0px;
+}
+
+.menu a:hover{
+    color:rgb(97, 99, 107);
+}
+
+.menu > li:hover .sub-menu{
+    display:block;
+}
+
+.sub-menu{
+    position: absolute;
+    display:none;
+    box-shadow:0 0 2px 0.5px #a7a1a1;
+    background-color: #FFFFFF;
+    margin-top:-10px;
+    margin-left: -6px;
+}
+
+.sub-menu > li>a{
+    color:rgb(148, 148, 150);
+    font-family: "Averia Serif Libre";
+    font-weight:bold;
+    font-size:18px;
+    text-align:left;
+    padding:2px 6px;
+}
+
+.sub-menu > li{
+    border-bottom:1px solid #BEBFC3;
+}
+
+.sub-menu > li:last-child{
+    border-bottom: none;
+}
+
+
+.footer{
+    background-color: #333333;
+    padding:30px;
+    text-align: center;
+    font-family:"Averia Serif Libre";
+    font-weight: bold;
+    color: white;
+}
