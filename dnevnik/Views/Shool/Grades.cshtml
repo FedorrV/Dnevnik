@@ -3,27 +3,28 @@
 <h1>@Model.name класс</h1>
 <dl>
     <dt>Классный руководитель</dt>
-    @{string name = "отсутствует"; }
+    @{string name = "отсутствует";}
     @if (Model.TeacherId != null)
     {
         name = Model.Teachers.lastname + " " + Model.Teachers.firstname + " " + Model.Teachers.patronymic;
     }
     <dd>
-        <a title="Подробнее об учителе" href="/Shool/Teachers/@Model.Teachers.TeacherId.ToString()">
+        @Html.ActionLink(@name, "Teachers", new { teacherId = Model.TeacherId }, new { title = "Посмотреть информацию об учителе" })
+        @*<a title="Подробнее об учителе" href="/Shool/Teachers/@Model.Teachers.TeacherId.ToString()">
         @name
-        </a>
+        </a>*@
     </dd>
 </dl>
 <h2>Список класса</h2>
 <ul>
-    <li></li>
-</ul>
-@foreach (dnevnik.Models.Students student in Model.Students)
-{
+    @foreach (dnevnik.Models.Students student in Model.Students)
+    {
     <li>
-        <a title="Подробнее об ученике" href="/Parent/Students/@student.StudentId">
-            @student.lastname @student.firstname @student.patronymic;
-        </a>
+        @Html.ActionLink(@student.lastname+" "+@student.firstname+" "+@student.patronymic, "Students", "Shool",new {studentId=student.StudentId}, new { title = "Посмотреть информацию об ученике" })
+        @*<a title="Подробнее об ученике" href="/Parent/Students/@student.StudentId">
+            @student.lastname @student.firstname @student.patronymic
+        </a>*@
     </li>
-}
+    }
+</ul>
 

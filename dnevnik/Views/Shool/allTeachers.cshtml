@@ -1,0 +1,14 @@
+﻿@model IEnumerable<dnevnik.Models.Teachers>
+
+<h1>Наш преподавательский состав</h1>
+
+<ul>
+
+    @foreach (dnevnik.Models.Teachers teacher in Model)
+    {
+    <li>
+        @Html.ActionLink(@teacher.lastname +" "+@teacher.firstname+" "+ @teacher.patronymic, "Teachers", "Shool", new { teacherId = teacher.TeacherId }, new { title = "Посмотреть информацию об учителе" })
+    </li>
+    }
+
+</ul>

@@ -1,0 +1,26 @@
+﻿
+@model IEnumerable<dnevnik.Models.Grades>
+
+<h1>Классы</h1>
+<table>
+    <tr>
+        <td><p>Класс</p></td>
+        <td><p>Классный руководитель</p></td>
+        <td></td>
+    </tr>
+    @foreach (dnevnik.Models.Grades gr in Model)
+    {
+        string name = gr.Teachers.lastname + " " + @gr.Teachers.firstname.ToString().Substring(0, 1) + "." + @gr.Teachers.patronymic.ToString().Substring(0, 1) + ".";
+        <tr>
+            <td>
+                @gr.name
+            </td>
+            <td>
+               @name
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать данные","EditGrades", new {gradeId=gr.GradeId}, new { title="Изменить информацию  данном классе"})
+            </td>
+        </tr>
+    }
+</table>

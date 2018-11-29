@@ -1,0 +1,6 @@
+﻿@using dnevnik.Models
+@model Students
+
+<h1>@Model.lastname @Model.firstname @Model.patronymic</h1><br />
+<p>Дата рождения - @Model.dateBirth.ToString().Substring(0, 10)</p><br />
+<p>Учится в @Model.Grades.name классе</p>

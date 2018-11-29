@@ -24,9 +24,10 @@
                         FIO = gr.Teachers.lastname + " " + gr.Teachers.firstname + " " + gr.Teachers.patronymic;
                         href = "/Shool/Teachers/" + gr.Teachers.TeacherId.ToString();
                     }
-                    <a title="Посмотреть информацию об учителе" href=@href>
-                        @FIO
-                    </a>
+                    @*<a title="Посмотреть информацию об учителе" href=@href>
+                    @FIO
+                    </a>*@
+                    @Html.ActionLink(@FIO, "Teachers", "Shool", new { teacherId = gr.TeacherId }, new { title = "Посмотреть информацию об учителе" })
                 </td>
             </tr>
         }

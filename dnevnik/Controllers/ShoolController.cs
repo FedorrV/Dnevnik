@@ -20,12 +20,44 @@ namespace dnevnik.Controllers
             List<Grades> grades = db.Grades.ToList();
             return View(grades);
         }
+
         [HttpGet]
         public ActionResult Grades(int gradeId)
         {
-            Grades grade = db.Grades.Find(gradeId);
-            return View("~/Views/Shool/Grades.cshtml", grade);
+            Grades grade = db.Grades.FirstOrDefault(gr=>gr.GradeId==gradeId);
+            if (grade != null)
+                return View(grade);
+            else
+                return HttpNotFound();
         }
+
+        public ActionResult allTeachers()
+        {
+            List<Teachers> teachers = db.Teachers.ToList();
+            return View(teachers);
+        }
+
+        [HttpGet]
+        public ActionResult Teachers(int teacherId)
+        {
+            Teachers teacher = db.Teachers.FirstOrDefault(t=>t.TeacherId==teacherId);
+
+            if (teacher != null)
+                return View(teacher);
+            else
+                return HttpNotFound();
+        }
+
+        public ActionResult Students(int studentId)
+        {
+            Students student = db.Students.FirstOrDefault(st=>st.StudentId==studentId);
+            if (student != null)
+                return View(student);
+            else
+                return HttpNotFound();
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

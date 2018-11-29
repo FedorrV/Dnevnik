@@ -17,20 +17,30 @@ namespace dnevnik.Controllers
         // GET: Teacher
         public ActionResult Grades()
         {
-            
             List<Grades> grades = db.Grades.ToList();
-            //for (int i=0;i < grades.Count();i++) {
-            //    if(grades[i].Teachers == null)
-            //    {
-            //        grades[i].Teachers.firstname = "Отсутствует";
-            //        grades[i].Teachers.lastname = "";
-            //        grades[i].Teachers.patronymic = "";
-            //        grades[i].Teachers.
+            return View(grades);
+        }
 
-            //    }        
-            //}
-           
-            return View("~/Views/Teacher/Grades.cshtml", grades);
+        [HttpGet]
+        public ActionResult EditGrades(int gradeId)
+        {
+            Grades grade = db.Grades.FirstOrDefault(gr => gr.GradeId == gradeId);
+            if(grade != null)
+            {
+                //List<Teachers> listTeachers = db.Teachers.ToList();
+
+                SelectList ListTeachers = new SelectList(db.Teachers,"TeacherId","lastname");
+                ViewBag.ListTeachers = ListTeachers;
+                return View(grade);
+            }
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult EditGrades(Grades grade)
+        {
+            Grades gr = grade;
+            return View();
         }
 
         protected override void Dispose(bool disposing)

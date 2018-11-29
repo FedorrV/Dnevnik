@@ -235,6 +235,7 @@
     <Content Include="Models\DB_context.edmx.diagram">
       <DependentUpon>DB_context.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Code\MyHelpers.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -263,11 +264,15 @@
     <Content Include="Views\Shared\mainMaster.cshtml" />
     <Content Include="Views\Shool\allGrades.cshtml" />
     <Content Include="Views\Shool\Grades.cshtml" />
+    <Content Include="Views\Shool\allTeachers.cshtml" />
+    <Content Include="Views\Shool\Teachers.cshtml" />
+    <Content Include="Views\Shool\Students.cshtml" />
+    <Content Include="Views\Teacher\Grades.cshtml" />
+    <Content Include="Views\Teacher\EditGrades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Parent\" />
-    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
