@@ -1,1 +1,13 @@
-﻿<h1>content</h1>
+﻿<table>
+    <tr>
+        <td><p>Фамилия</p></td>
+        <td><p>Имя</p></td>
+    </tr>
+    @foreach (var s in ViewBag.Students)
+    {
+        <tr>
+            <td><p>@s.firstname</p></td>
+            <td><p>@s.lastname</p></td>
+        </tr>
+    }
+</table>

@@ -96,3 +96,8 @@ C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dn
 C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\obj\Debug\dnevnik.csproj.CopyComplete
 C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\obj\Debug\dnevnik.dll
 C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\obj\Debug\dnevnik.pdb
+C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\bin\EntityFramework.dll
+C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\bin\EntityFramework.SqlServer.dll
+C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\bin\EntityFramework.xml
+C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\bin\EntityFramework.SqlServer.xml
+C:\Users\Fedor\Desktop\папка\Политех\5семестр\БД\лаб4\dnevnik\dnevnik\bin\ru\EntityFramework.resources.dll

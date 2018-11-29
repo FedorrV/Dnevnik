@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<dnevnik.Models.Grades>
+
+    <h1>Список классов</h1>
+    <table>
+        <tr>
+            <td><p>Класс</p></td>
+            <td><p>Классный руководитель</p></td>
+        </tr>
+        @foreach (dnevnik.Models.Grades gr in Model)
+        {
+            string FIO = "Отсутствует";
+            string href = "#";
+            <tr>
+                <td>
+                    @*<a title="Посмотреть информацию о классе" href="/Shool/Grades/@gr.GradeId.ToString()">
+                    @gr.name
+                    </a>*@
+                    @Html.ActionLink(gr.name, "Grades", "Shool", new { gradeId = gr.GradeId }, new {title= "Посмотреть информацию о классе" })
+                </td>
+                <td>
+                    @if (gr.Teachers != null)
+                    {
+                        FIO = gr.Teachers.lastname + " " + gr.Teachers.firstname + " " + gr.Teachers.patronymic;
+                        href = "/Shool/Teachers/" + gr.Teachers.TeacherId.ToString();
+                    }
+                    <a title="Посмотреть информацию об учителе" href=@href>
+                        @FIO
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
