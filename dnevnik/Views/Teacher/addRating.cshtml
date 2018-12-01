@@ -1,0 +1,30 @@
+﻿@model dnevnik.Models.Ratings
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+
+<h2>Добавление новой оценки</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("LessonId", (string)Model)
+
+    <p>
+        <label>Классы</label>
+        <br />
+        @Html.DropDownList("GradeId", ViewBag.listGrades as SelectList, new { id = "listGrades" })
+    </p>
+    <p>
+        <label for="Students">Ученик(ца)</label><br />
+        <select name="StudentId" id="Students"></select>
+    </p>
+    <p>
+        <label for="ratingNumber">Оценка</label><br />
+        <select name="rating" id="ratingNumber">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </p>
+
+    <p><input type="submit" value="Добавить класс" /></p>
+}

@@ -1,0 +1,33 @@
+﻿@model dnevnik.Models.Lessons
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+
+@using (Html.BeginForm("addLesson", "Teacher", FormMethod.Post))
+{
+
+    @*@Html.HiddenFor(gr => gr.GradeId)*@
+    <p>
+        <label for="date">Дата урока</label>
+        <input type="date" id="date" name="dateLesson"
+               value="2018-07-07"
+               min="2018-01-01" max="2019-11-11">
+    </p>
+    <p>
+        @Html.LabelFor(l=>l.timeLesson, "Время урока")<br />
+        @Html.EditorFor(l=>l.timeLesson)
+    </p>
+    <p>
+        @Html.LabelFor(l=>l.SubjectId, "Предмет")
+        <br />
+        @Html.DropDownList("SubjectId", ViewBag.ListSubjects as SelectList,new { id="ListSubj"})
+    </p>
+    <p>
+        <label>Преподаватель</label><br />
+        <select name="TeacherId" id="listTeacher">
+            <option value="9">Семенов Сергей Сергеевич</option>
+        </select>
+    </p>
+
+    <p><input type="submit" value="Добавить класс"/></p>
+}
+
+<script src="~/Scripts/scipts/addLesson.js"></script>

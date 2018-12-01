@@ -1,0 +1,23 @@
+﻿@using dnevnik.Models
+@model Grades
+
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+<h2>Добавление нового класса</h2>
+@using (Html.BeginForm("addGrade", "Teacher", FormMethod.Post))
+{
+    
+        @*@Html.HiddenFor(gr => gr.GradeId)*@
+        <p>
+            @Html.LabelFor(gr => gr.name, "Название класса")
+            <br />
+            @Html.EditorFor(gr => gr.name)
+        </p>
+        <p>
+            @Html.LabelFor(gr => gr.Teachers.TeacherId, "Классный руководитель")
+            <br />
+            @Html.DropDownList("TeacherId", ViewBag.ListTeachers as SelectList)
+        </p>
+
+        <p><input type="submit" value="Добавить класс" /></p>
+    
+}

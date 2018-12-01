@@ -1,0 +1,33 @@
+﻿@model IEnumerable<dnevnik.Models.Lessons>
+
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+<h2>Управление уроками</h2>
+
+<table>
+    <caption>Уроки</caption>
+    <tr>
+        <th>
+            Предмет
+        </th>
+        <th>
+            Дата урока
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (dnevnik.Models.Lessons les in Model)
+    {
+        <tr>
+            <td>
+                @les.Subjects.name
+            </td>
+            <td>
+                @les.dateLesson.ToString().Substring(0,10)  
+            </td>
+            <td>
+                @Html.ActionLink("Добавить оценку", "addRating", new { lessonId = les.LessonId }, new { title = "Дабавить оценку для данного урока", @class = "link" })
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Добавить Урок", "addLesson",new { title = "Дабавить информацию о новом", @class = "link" })

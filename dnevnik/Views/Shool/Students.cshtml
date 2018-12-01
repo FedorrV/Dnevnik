@@ -1,6 +1,8 @@
 ﻿@using dnevnik.Models
 @model Students
 
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 <h1>@Model.lastname @Model.firstname @Model.patronymic</h1><br />
+<img src="ss/sd" alt="Фотка"/>
 <p>Дата рождения - @Model.dateBirth.ToString().Substring(0, 10)</p><br />
 <p>Учится в @Model.Grades.name классе</p>

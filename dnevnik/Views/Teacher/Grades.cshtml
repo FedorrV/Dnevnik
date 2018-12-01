@@ -1,11 +1,14 @@
 ﻿
 @model IEnumerable<dnevnik.Models.Grades>
 
-<h1>Классы</h1>
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+<h1>Управление классами</h1>
 <table>
     <tr>
         <td><p>Класс</p></td>
         <td><p>Классный руководитель</p></td>
+        <td></td>
+        <td></td>
         <td></td>
     </tr>
     @foreach (dnevnik.Models.Grades gr in Model)
@@ -16,11 +19,20 @@
                 @gr.name
             </td>
             <td>
-               @name
+                @name
             </td>
             <td>
-                @Html.ActionLink("Редактировать данные","EditGrades", new {gradeId=gr.GradeId}, new { title="Изменить информацию  данном классе"})
+                @Html.ActionLink("Удалить класс", "DeleteGrade", new { gradeId = gr.GradeId }, new { title = "Удалить данный класс", @class = "link" })
             </td>
+
+            <td>
+                @Html.ActionLink("Удалить ученика", "deleteStudents", new { gradeId = gr.GradeId },new { title = "Удалить информацию об ученике", @class = "link" })
+            </td>
+            @*<td>
+                    @Html.ActionLink("Редактировать данные","EditGrades", new {gradeId=gr.GradeId}, new { title="Изменить информацию  данном классе"})
+                </td>*@
         </tr>
     }
 </table>
+@Html.ActionLink("Добавить класс", "addGrade", new { }, new { title = "Добавить новый класс", @class = "link" })
+@Html.ActionLink("Добавить ученика", "addStudent", new { }, new { title = "Добавить информацию о новом ученике", @class = "link" })

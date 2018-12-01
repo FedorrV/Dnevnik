@@ -1,34 +1,37 @@
 ﻿
 @model IEnumerable<dnevnik.Models.Grades>
 
-    <h1>Список классов</h1>
-    <table>
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+
+<h1>Список классов</h1>
+<table>
+    <tr>
+        <td><p>Класс</p></td>
+        <td><p>Классный руководитель</p></td>
+    </tr>
+    @foreach (dnevnik.Models.Grades gr in Model)
+    {
+        string FIO = "Отсутствует";
+        string href = "#";
         <tr>
-            <td><p>Класс</p></td>
-            <td><p>Классный руководитель</p></td>
-        </tr>
-        @foreach (dnevnik.Models.Grades gr in Model)
-        {
-            string FIO = "Отсутствует";
-            string href = "#";
-            <tr>
-                <td>
-                    @*<a title="Посмотреть информацию о классе" href="/Shool/Grades/@gr.GradeId.ToString()">
+            <td>
+                @*<a title="Посмотреть информацию о классе" href="/Shool/Grades/@gr.GradeId.ToString()">
                     @gr.name
                     </a>*@
-                    @Html.ActionLink(gr.name, "Grades", "Shool", new { gradeId = gr.GradeId }, new {title= "Посмотреть информацию о классе" })
-                </td>
-                <td>
-                    @if (gr.Teachers != null)
-                    {
-                        FIO = gr.Teachers.lastname + " " + gr.Teachers.firstname + " " + gr.Teachers.patronymic;
-                        href = "/Shool/Teachers/" + gr.Teachers.TeacherId.ToString();
-                    }
-                    @*<a title="Посмотреть информацию об учителе" href=@href>
+                @Html.ActionLink(gr.name, "Grades", "Shool", new { gradeId = gr.GradeId }, new { title = "Посмотреть информацию о классе", @class = "link" })
+            </td>
+            <td>
+                @if (gr.Teachers != null)
+                {
+                    FIO = gr.Teachers.lastname + " " + gr.Teachers.firstname + " " + gr.Teachers.patronymic;
+                    href = "/Shool/Teachers/" + gr.Teachers.TeacherId.ToString();
+                }
+                @*<a title="Посмотреть информацию об учителе" href=@href>
                     @FIO
                     </a>*@
-                    @Html.ActionLink(@FIO, "Teachers", "Shool", new { teacherId = gr.TeacherId }, new { title = "Посмотреть информацию об учителе" })
-                </td>
-            </tr>
-        }
-    </table>
+                @Html.ActionLink(@FIO, "Teachers", "Shool", new { teacherId = gr.TeacherId }, new { title = "Посмотреть информацию об учителе", @class = "link" })
+            </td>
+        </tr>
+    }
+</table>
+

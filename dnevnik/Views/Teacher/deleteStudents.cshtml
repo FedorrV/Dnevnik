@@ -1,0 +1,18 @@
+﻿@model IEnumerable<dnevnik.Models.Students>
+
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+
+<h2>Удаление ученика</h2>
+<table>
+    @foreach(dnevnik.Models.Students st in Model)
+    {
+    <tr>
+        <td>
+            @st.lastname @st.firstname @st.patronymic
+        </td>
+        <td>
+            @Html.ActionLink("Удалить данного ученика", "deleteStudent", new {studentId=st.StudentId}, new { title = "Удалить информацию о данном ученике", @class = "link" })
+        </td>
+    </tr>
+    }
+</table>

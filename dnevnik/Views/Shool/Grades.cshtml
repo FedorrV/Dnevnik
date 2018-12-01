@@ -1,5 +1,7 @@
 ﻿@model dnevnik.Models.Grades
 
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+
 <h1>@Model.name класс</h1>
 <dl>
     <dt>Классный руководитель</dt>
@@ -9,7 +11,7 @@
         name = Model.Teachers.lastname + " " + Model.Teachers.firstname + " " + Model.Teachers.patronymic;
     }
     <dd>
-        @Html.ActionLink(@name, "Teachers", new { teacherId = Model.TeacherId }, new { title = "Посмотреть информацию об учителе" })
+        @Html.ActionLink(@name, "Teachers", new { teacherId = Model.TeacherId }, new { title = "Посмотреть информацию об учителе",@class = "link" })
         @*<a title="Подробнее об учителе" href="/Shool/Teachers/@Model.Teachers.TeacherId.ToString()">
         @name
         </a>*@
@@ -20,7 +22,7 @@
     @foreach (dnevnik.Models.Students student in Model.Students)
     {
     <li>
-        @Html.ActionLink(@student.lastname+" "+@student.firstname+" "+@student.patronymic, "Students", "Shool",new {studentId=student.StudentId}, new { title = "Посмотреть информацию об ученике" })
+        @Html.ActionLink(@student.lastname+" "+@student.firstname+" "+@student.patronymic, "Students", "Shool",new {studentId=student.StudentId}, new { title = "Посмотреть информацию об ученике", @class = "link" })
         @*<a title="Подробнее об ученике" href="/Parent/Students/@student.StudentId">
             @student.lastname @student.firstname @student.patronymic
         </a>*@

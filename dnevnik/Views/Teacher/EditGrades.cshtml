@@ -1,6 +1,7 @@
 ﻿@using dnevnik.Models
 @model Grades
 
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 <h2>Редактирование информации о классе</h2>
 @using (Html.BeginForm("EditGrades", "Teacher", FormMethod.Post))
 {
@@ -17,6 +18,6 @@
             @Html.DropDownList("TeacherId", ViewBag.ListTeachers as SelectList)
         </p>
         
-        <p><input type="submit" value="Отправить" /></p>
+        <p><input type="submit" value="Сохранить" /></p>
     </fieldset>
 }

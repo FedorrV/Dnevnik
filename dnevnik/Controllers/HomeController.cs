@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using dnevnik.Models;
 using System.Configuration;
-
+using System.Data.Entity;
 namespace dnevnik.Controllers
 {
     public class HomeController : Controller

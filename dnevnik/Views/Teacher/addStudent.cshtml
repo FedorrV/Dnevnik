@@ -1,0 +1,50 @@
+﻿@using dnevnik.Models
+@model Students
+
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+<h2>Добавление нового ученика</h2>
+@using (Html.BeginForm("addStudent", "Teacher", FormMethod.Post))
+{
+    <fieldset>
+        @*@Html.HiddenFor(gr => gr.GradeId)*@
+        <p>
+            @Html.LabelFor(st => st.firstname, "Имя")
+            <br />
+            @Html.EditorFor(st => st.firstname)
+        </p>
+        <p>
+            @Html.LabelFor(st => st.lastname, "Фамилия")
+            <br />
+            @Html.EditorFor(st => st.lastname)
+        </p>
+        <p>
+            @Html.LabelFor(st => st.patronymic, "Отчество")
+            <br />
+            @Html.EditorFor(st => st.patronymic)
+        </p>
+        <p>
+            @Html.LabelFor(st => st.address, "Адрес места жительства")
+            <br />
+            @Html.EditorFor(st => st.address)
+        </p>
+        <p>
+            <label for="date">Дата рождения</label>
+            <input type="date" id="date" name="dateBirth"
+                   value="2000-07-07"
+                   min="1990-01-01" max="2010-11-11">
+        </p>
+        <p>
+            @Html.RadioButton("gender", "м")
+            <span>м</span> <br />
+            @Html.RadioButton("gender", "ж")
+            <span>ж</span> <br />
+        </p>
+        <p>
+            @Html.LabelFor(st => st.GradeId, "Класс")
+            <br />
+            @Html.DropDownList("GradeId", ViewBag.ListGrades as SelectList)
+        </p>
+
+        <p><input type="submit" value="Добавить ученика" /></p>
+    </fieldset>
+}

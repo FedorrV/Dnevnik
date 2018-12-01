@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using dnevnik.Models;
-
+//using System.Data.Entity;
 namespace dnevnik.Controllers
 {
     public class ParentController : Controller
