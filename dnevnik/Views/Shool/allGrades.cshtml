@@ -1,13 +1,12 @@
 ﻿
 @model IEnumerable<dnevnik.Models.Grades>
 
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 
 <h1>Список классов</h1>
-<table>
+<table class="table">
     <tr>
-        <td><p>Класс</p></td>
-        <td><p>Классный руководитель</p></td>
+        <th><p>Класс</p></th>
+        <th><p>Классный руководитель</p></th>
     </tr>
     @foreach (dnevnik.Models.Grades gr in Model)
     {

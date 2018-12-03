@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<dnevnik.Models.Teachers>
 
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
-<h1>Наш преподавательский состав</h1>
-
-<ul>
+<h2>Наш преподавательский состав</h2>   
+<ul class="list-group">
 
     @foreach (dnevnik.Models.Teachers teacher in Model)
     {
-    <li>
+    <li class="list-group-item">
         @Html.ActionLink(@teacher.lastname +" "+@teacher.firstname+" "+ @teacher.patronymic, "Teachers", "Shool", new { teacherId = teacher.TeacherId }, new { title = "Посмотреть информацию об учителе",@class = "link" })
     </li>
     }

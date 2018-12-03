@@ -1,9 +1,8 @@
 ﻿@using dnevnik.Models
 @model Students
 
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 <h2>Добавление нового ученика</h2>
-@using (Html.BeginForm("addStudent", "Teacher", FormMethod.Post))
+@using (Html.BeginForm("addStudent", "Teacher", FormMethod.Post, new { @class = ".form - control" }))
 {
     <fieldset>
         @*@Html.HiddenFor(gr => gr.GradeId)*@

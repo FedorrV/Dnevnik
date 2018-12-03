@@ -1,15 +1,14 @@
 ﻿@using dnevnik.Models
 @model Teachers
 
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 <h1>@Model.lastname @Model.firstname @Model.patronymic</h1><br />
-<img src="ss/sd" alt="Фотка" />
+<img src="ss/sd" alt="Фото" />
 <p>Дата рождения - @Model.dateBirth.ToString().Substring(0,10)</p><br />
 <h2>Преподаваемые дисциплины</h2>
-<ul>
+<ul class="list-group">
     @foreach (Specialization s in Model.Specialization)
     {
-        <li>@s.Subjects.name</li>
+        <li class="list-group-item">@s.Subjects.name</li>
     }
 </ul>
 

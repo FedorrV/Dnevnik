@@ -1,9 +1,8 @@
 ﻿@model dnevnik.Models.Lessons
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 
 <h2>Добавление новой оценки</h2>
 
-<table>
+<table class="table">
     <tr>
         <td>
             Предмет
@@ -36,7 +35,7 @@
     </tr>
 </table>
 
-@using (Html.BeginForm("addRating", "Teacher", FormMethod.Post))
+@using (Html.BeginForm("addRating", "Teacher", FormMethod.Post, new { @class = ".form - control" }))
 {
     @Html.Hidden("LessonId", (int)ViewBag.lessonId)
     <p>

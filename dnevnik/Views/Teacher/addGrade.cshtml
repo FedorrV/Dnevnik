@@ -1,11 +1,9 @@
 ﻿@using dnevnik.Models
 @model Grades
-
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 <h2>Добавление нового класса</h2>
-@using (Html.BeginForm("addGrade", "Teacher", FormMethod.Post))
+@using (Html.BeginForm("addGrade", "Teacher", FormMethod.Post, new {@class=".form - control" }))
 {
-    
+
         @*@Html.HiddenFor(gr => gr.GradeId)*@
         <p>
             @Html.LabelFor(gr => gr.name, "Название класса")

@@ -1,8 +1,7 @@
 ﻿@model dnevnik.Models.Grades
 
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 
-<h1>@Model.name класс</h1>
+<h2>@Model.name класс</h2>
 <dl>
     <dt>Классный руководитель</dt>
     @{string name = "отсутствует";}
@@ -17,11 +16,11 @@
         </a>*@
     </dd>
 </dl>
-<h2>Список класса</h2>
-<ul>
+<h2>Список учеников класса</h2>
+<ul class="list-group">
     @foreach (dnevnik.Models.Students student in Model.Students)
     {
-    <li>
+    <li class="list-group-item">
         @Html.ActionLink(@student.lastname+" "+@student.firstname+" "+@student.patronymic, "Students", "Shool",new {studentId=student.StudentId}, new { title = "Посмотреть информацию об ученике", @class = "link" })
         @*<a title="Подробнее об ученике" href="/Parent/Students/@student.StudentId">
             @student.lastname @student.firstname @student.patronymic

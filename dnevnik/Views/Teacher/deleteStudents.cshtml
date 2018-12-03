@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<dnevnik.Models.Students>
 
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
-
 <h2>Удаление ученика</h2>
-<table>
+<table class="table">
     @foreach(dnevnik.Models.Students st in Model)
     {
     <tr>

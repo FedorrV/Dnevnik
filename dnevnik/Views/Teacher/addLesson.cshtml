@@ -1,8 +1,7 @@
 ﻿@model dnevnik.Models.Lessons
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 
 <h2>Добавление урока</h2>
-@using (Html.BeginForm("addLesson", "Teacher", FormMethod.Post))
+@using (Html.BeginForm("addLesson", "Teacher", FormMethod.Post, new { @class = ".form - control" }))
 {
 
     @*@Html.HiddenFor(gr => gr.GradeId)*@
@@ -36,4 +35,6 @@
     <p><input type="submit" value="Добавить урок" /></p>
 }
 
-<script src="~/Scripts/scipts/addLesson.js"></script>
+@section Scripts {
+    @Scripts.Render("~/Scripts/scipts/addLesson.js")
+}

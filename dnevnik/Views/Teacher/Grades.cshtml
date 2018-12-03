@@ -1,15 +1,14 @@
 ﻿
 @model IEnumerable<dnevnik.Models.Grades>
 
-<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 <h1>Управление классами</h1>
-<table>
+<table class="table">
     <tr>
-        <td><p>Класс</p></td>
-        <td><p>Классный руководитель</p></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <th><p>Класс</p></th>
+        <th><p>Классный руководитель</p></th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
     @foreach (dnevnik.Models.Grades gr in Model)
     {
@@ -34,5 +33,5 @@
         </tr>
     }
 </table>
-@Html.ActionLink("Добавить класс", "addGrade", new { }, new { title = "Добавить новый класс", @class = "link" })
+@Html.ActionLink("Добавить класс", "addGrade", new { }, new { title = "Добавить новый класс", @class = "link" })<br />
 @Html.ActionLink("Добавить ученика", "addStudent", new { }, new { title = "Добавить информацию о новом ученике", @class = "link" })
