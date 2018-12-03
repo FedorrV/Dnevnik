@@ -124,8 +124,11 @@ namespace dnevnik.Controllers
 
         public ActionResult addLesson()
         {
+            List<Grades> listGrades = db.Grades.ToList();
+            SelectList ListGrades = new SelectList(listGrades, "GradeId", "name");
             List<Subjects> listSubjects = db.Subjects.ToList();
             SelectList ListSubjects = new SelectList(listSubjects, "SubjectId", "name");
+            ViewBag.ListGrades = ListGrades;
             ViewBag.ListSubjects = ListSubjects;
             return View();
         }
@@ -164,10 +167,25 @@ namespace dnevnik.Controllers
             if (lessonId == null)
                 return HttpNotFound();
 
-            List<Grades> grades = db.Grades.ToList();
-            SelectList listGrades = new SelectList(grades, "GradeId","name");
-            ViewBag.listGrades = listGrades;
-            return View(lessonId);
+            Lessons lesson = db.Lessons.FirstOrDefault(l=>l.LessonId==lessonId);
+            if (lesson == null)
+                return HttpNotFound();
+            List<Students> students = db.Students.Where(s => s.GradeId == lesson.GradeId).ToList();
+            var viewList = students.Select(p => new { p.StudentId, Name = $"{p.lastname} {p.firstname} {p.patronymic}" }).ToList();
+            SelectList listStudents = new SelectList(viewList, "StudentId","Name");
+
+            ViewBag.listStudents = listStudents;
+            ViewBag.lessonId = lessonId;
+            return View(lesson);
+        }
+
+        [HttpPost]
+        public ActionResult addRating(Ratings rat)
+        {
+            db.Entry(rat).State = EntityState.Added;
+            db.SaveChanges();
+            List<Lessons> lessons = db.Lessons.ToList();
+            return RedirectToAction("Lessons", lessons);
         }
 
 

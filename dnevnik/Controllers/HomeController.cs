@@ -11,6 +11,7 @@ namespace dnevnik.Controllers
     public class HomeController : Controller
     {
         private shoolJournalEntities db;
+        
         public HomeController()
         {
             db = new shoolJournalEntities();

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище shoolJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Grades">
+    <Key>
+      <PropertyRef Name="GradeId" />
+    </Key>
+    <Property Name="GradeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShoolId" Type="int" />
+    <Property Name="TeacherId" Type="int" />
+  </EntityType>
+  <EntityType Name="Lessons">
+    <Key>
+      <PropertyRef Name="LessonId" />
+    </Key>
+    <Property Name="TeacherId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="LessonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="timeLesson" Type="varchar" MaxLength="5" />
+    <Property Name="dateLesson" Type="date" />
+    <Property Name="GradeId" Type="int" />
+  </EntityType>
+  <EntityType Name="Ratings">
+    <Key>
+      <PropertyRef Name="RaitingId" />
+    </Key>
+    <Property Name="RaitingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LessonId" Type="int" />
+    <Property Name="rating" Type="tinyint" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Shools">
+    <Key>
+      <PropertyRef Name="ShoolId" />
+    </Key>
+    <Property Name="ShoolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Specialization">
+    <Key>
+      <PropertyRef Name="SpecializationId" />
+    </Key>
+    <Property Name="SpecializationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="TeacherId" Type="int" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="firstname" Type="nvarchar" MaxLength="255" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="255" />
+    <Property Name="patronymic" Type="nvarchar" MaxLength="255" />
+    <Property Name="dateBirth" Type="date" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShoolId" Type="int" />
+    <Property Name="gender" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="GradeId" Type="int" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="TeacherId" />
+    </Key>
+    <Property Name="firstname" Type="nvarchar" MaxLength="255" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="255" />
+    <Property Name="patronymic" Type="nvarchar" MaxLength="255" />
+    <Property Name="dateBirth" Type="date" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShoolId" Type="int" />
+    <Property Name="GradeId" Type="int" />
+    <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gender" Type="nvarchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Grades_Shools">
+    <End Role="Shools" Type="Self.Shools" Multiplicity="0..1" />
+    <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shools">
+        <PropertyRef Name="ShoolId" />
+      </Principal>
+      <Dependent Role="Grades">
+        <PropertyRef Name="ShoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Grades_Teachers">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+    <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="Grades">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lessons_Grades">
+    <End Role="Grades" Type="Self.Grades" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grades">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lessons_Subjects">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lessons_Teachers">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ratings_Lessons">
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="0..1" />
+    <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lessons">
+        <PropertyRef Name="LessonId" />
+      </Principal>
+      <Dependent Role="Ratings">
+        <PropertyRef Name="LessonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ratings_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+    <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Ratings">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Specialization_Specialization">
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+    <End Role="Specialization1" Type="Self.Specialization" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Specialization">
+        <PropertyRef Name="SpecializationId" />
+      </Principal>
+      <Dependent Role="Specialization1">
+        <PropertyRef Name="SpecializationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Specialization_Teachers">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="Specialization">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Grades">
+    <End Role="Grades" Type="Self.Grades" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grades">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Shools">
+    <End Role="Shools" Type="Self.Shools" Multiplicity="0..1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shools">
+        <PropertyRef Name="ShoolId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="ShoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teachers_Grades">
+    <End Role="Grades" Type="Self.Grades" Multiplicity="0..1" />
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grades">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="Teachers">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teachers_Shools">
+    <End Role="Shools" Type="Self.Shools" Multiplicity="0..1" />
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shools">
+        <PropertyRef Name="ShoolId" />
+      </Principal>
+      <Dependent Role="Teachers">
+        <PropertyRef Name="ShoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище shoolJournalModelContainer">
+    <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shools" EntityType="Self.Shools" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Specialization" EntityType="Self.Specialization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Grades_Shools" Association="Self.FK_Grades_Shools">
+      <End Role="Shools" EntitySet="Shools" />
+      <End Role="Grades" EntitySet="Grades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Grades_Teachers" Association="Self.FK_Grades_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Grades" EntitySet="Grades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lessons_Grades" Association="Self.FK_Lessons_Grades">
+      <End Role="Grades" EntitySet="Grades" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lessons_Subjects" Association="Self.FK_Lessons_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lessons_Teachers" Association="Self.FK_Lessons_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ratings_Lessons" Association="Self.FK_Ratings_Lessons">
+      <End Role="Lessons" EntitySet="Lessons" />
+      <End Role="Ratings" EntitySet="Ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ratings_Students" Association="Self.FK_Ratings_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Ratings" EntitySet="Ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Specialization_Specialization" Association="Self.FK_Specialization_Specialization">
+      <End Role="Specialization" EntitySet="Specialization" />
+      <End Role="Specialization1" EntitySet="Specialization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Specialization_Teachers" Association="Self.FK_Specialization_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Specialization" EntitySet="Specialization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Grades" Association="Self.FK_Students_Grades">
+      <End Role="Grades" EntitySet="Grades" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Shools" Association="Self.FK_Students_Shools">
+      <End Role="Shools" EntitySet="Shools" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teachers_Grades" Association="Self.FK_Teachers_Grades">
+      <End Role="Grades" EntitySet="Grades" />
+      <End Role="Teachers" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teachers_Shools" Association="Self.FK_Teachers_Shools">
+      <End Role="Shools" EntitySet="Shools" />
+      <End Role="Teachers" EntitySet="Teachers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

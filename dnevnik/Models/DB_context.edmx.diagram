@@ -25,6 +25,8 @@
         <AssociationConnector Association="shoolJournalModel.FK__Teachers__shoolI__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="shoolJournalModel.FK__Specializ__subId__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="shoolJournalModel.FK__Specializat__tId__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="shoolJournalModel.FK_Lessons_Grades" />
+        <AssociationConnector Association="shoolJournalModel.FK_Specialization_Specialization" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

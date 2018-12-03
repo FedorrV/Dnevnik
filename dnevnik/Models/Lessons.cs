@@ -22,12 +22,14 @@ namespace dnevnik.Models
     
         public Nullable<int> TeacherId { get; set; }
         public Nullable<int> SubjectId { get; set; }
+        public Nullable<int> GradeId { get; set; }
         public int LessonId { get; set; }
         public string timeLesson { get; set; }
         public Nullable<System.DateTime> dateLesson { get; set; }
     
         public virtual Subjects Subjects { get; set; }
         public virtual Teachers Teachers { get; set; }
+        public virtual Grades Grades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ratings> Ratings { get; set; }
     }

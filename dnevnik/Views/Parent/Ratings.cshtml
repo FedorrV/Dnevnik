@@ -1,0 +1,31 @@
+﻿@model ICollection<dnevnik.Models.Grades>
+<link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
+
+<h2>Оценки учеников</h2>
+<select id="listGrades">
+    @foreach (dnevnik.Models.Grades grade in Model)
+    {
+        <option value=@grade.GradeId.ToString()>@grade.name</option>
+    }
+</select>
+<select id="listStudens">
+</select>
+<table id="tableRatings">
+    <tr>
+        <th>
+            Предмет
+        </th>
+        <th>
+            Преподаватель
+        </th>
+        <th>
+            Дата урока
+        </th>
+        <th>
+            Время урока
+        <th>
+            оценка
+        </th>
+    </tr>
+</table>
+<script src="~/Scripts/scipts/getRatings.js"></script>

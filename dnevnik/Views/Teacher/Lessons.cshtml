@@ -12,22 +12,30 @@
         <th>
             Дата урока
         </th>
+        <th>Преподаватель</th>
+        <th>Класс</th>
         <th></th>
     </tr>
 
     @foreach (dnevnik.Models.Lessons les in Model)
     {
-        <tr>
-            <td>
-                @les.Subjects.name
-            </td>
-            <td>
-                @les.dateLesson.ToString().Substring(0,10)  
-            </td>
-            <td>
-                @Html.ActionLink("Добавить оценку", "addRating", new { lessonId = les.LessonId }, new { title = "Дабавить оценку для данного урока", @class = "link" })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @les.Subjects.name
+        </td>
+        <td>
+            @les.dateLesson.ToString().Substring(0, 10)
+        </td>
+        <td>
+            @les.Teachers.lastname @les.Teachers.firstname @les.Teachers.patronymic
+        </td>
+        <td>
+            @les.Grades.name
+        </td>
+        <td>
+            @Html.ActionLink("Добавить оценку", "addRating", new { lessonId = les.LessonId }, new { title = "Дабавить оценку для данного урока", @class = "link" })
+        </td>
+    </tr>
     }
 </table>
 @Html.ActionLink("Добавить Урок", "addLesson",new { title = "Дабавить информацию о новом", @class = "link" })

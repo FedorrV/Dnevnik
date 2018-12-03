@@ -1,6 +1,7 @@
 ﻿@model dnevnik.Models.Lessons
 <link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 
+<h2>Добавление урока</h2>
 @using (Html.BeginForm("addLesson", "Teacher", FormMethod.Post))
 {
 
@@ -12,13 +13,18 @@
                min="2018-01-01" max="2019-11-11">
     </p>
     <p>
-        @Html.LabelFor(l=>l.timeLesson, "Время урока")<br />
-        @Html.EditorFor(l=>l.timeLesson)
+        @Html.LabelFor(l => l.timeLesson, "Время урока")<br />
+        @Html.EditorFor(l => l.timeLesson)
     </p>
     <p>
-        @Html.LabelFor(l=>l.SubjectId, "Предмет")
+        @Html.LabelFor(l => l.SubjectId, "Предмет")
         <br />
-        @Html.DropDownList("SubjectId", ViewBag.ListSubjects as SelectList,new { id="ListSubj"})
+        @Html.DropDownList("SubjectId", ViewBag.ListSubjects as SelectList, new { id = "ListSubj" })
+    </p>
+    <p>
+        @Html.LabelFor(l => l.GradeId, "Класс")
+        <br />
+        @Html.DropDownList("GradeId", ViewBag.ListGrades as SelectList, new { id = "listGrades" })
     </p>
     <p>
         <label>Преподаватель</label><br />
@@ -27,7 +33,7 @@
         </select>
     </p>
 
-    <p><input type="submit" value="Добавить класс"/></p>
+    <p><input type="submit" value="Добавить урок" /></p>
 }
 
 <script src="~/Scripts/scipts/addLesson.js"></script>

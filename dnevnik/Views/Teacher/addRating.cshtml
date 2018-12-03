@@ -1,20 +1,47 @@
-﻿@model dnevnik.Models.Ratings
+﻿@model dnevnik.Models.Lessons
 <link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")">
 
 <h2>Добавление новой оценки</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.Hidden("LessonId", (string)Model)
+<table>
+    <tr>
+        <td>
+            Предмет
+        </td>
+        <td>@Model.Subjects.name</td>
+    </tr>
+    <tr>
+        <td>
+            Класс
+        </td>
+        <td>
+            @Model.Grades.name
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Дата проведения урока
+        </td>
+        <td>
+            @Model.dateLesson.ToString().Substring(0, 10)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Преподаватель
+        </td>
+        <td>
+            @Model.Teachers.lastname @Model.Teachers.firstname @Model.Teachers.patronymic
+        </td>
+    </tr>
+</table>
 
+@using (Html.BeginForm("addRating", "Teacher", FormMethod.Post))
+{
+    @Html.Hidden("LessonId", (int)ViewBag.lessonId)
     <p>
-        <label>Классы</label>
-        <br />
-        @Html.DropDownList("GradeId", ViewBag.listGrades as SelectList, new { id = "listGrades" })
-    </p>
-    <p>
-        <label for="Students">Ученик(ца)</label><br />
-        <select name="StudentId" id="Students"></select>
+        <label for="listGrades">Ученик(ца)</label><br />
+        @Html.DropDownList("StudentId", ViewBag.listStudents as SelectList, new { id = "listGrades" })
     </p>
     <p>
         <label for="ratingNumber">Оценка</label><br />
@@ -26,5 +53,7 @@
         </select>
     </p>
 
-    <p><input type="submit" value="Добавить класс" /></p>
+    <p><input type="submit" value="Добавить оценку" id="buttonSubmit" /></p>
 }
+
+<!--<script src="~/Scripts/scipts/addRating.js"></script>-->

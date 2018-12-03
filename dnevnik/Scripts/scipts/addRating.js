@@ -1,7 +1,8 @@
 ﻿var Students = document.getElementById("Students");
 var listGrades = document.getElementById("listGrades");
-
+var buttonSubmit = document.getElementById("buttonSubmit");
 function changeOption() {
+   
     var GradeId = listGrades.options[listGrades.selectedIndex].value;
     var xhr = new XMLHttpRequest();
 
@@ -35,4 +36,13 @@ function changeOption() {
     }
 }
 
+function checkGrade() {
+    if (listGrades.selectedIndex == 0) {
+        alert("выберите класс");
+        return false;
+    }
+    return;
+}
+
 listGrades.addEventListener("change", changeOption);
+buttonSubmit.addEventListener('onclick', checkGrade);

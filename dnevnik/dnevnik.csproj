@@ -250,6 +250,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\scipts\addLesson.js" />
     <Content Include="Scripts\scipts\addRating.js" />
+    <Content Include="Scripts\scipts\getRatings.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -278,10 +279,10 @@
     <Content Include="Views\Teacher\Lessons.cshtml" />
     <Content Include="Views\Teacher\addLesson.cshtml" />
     <Content Include="Views\Teacher\addRating.cshtml" />
+    <Content Include="Views\Parent\Ratings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Parent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
