@@ -31,7 +31,7 @@ namespace dnevnik.Controllers
         }
 
         [HttpGet]
-        public JsonResult getRatings(int studentId)
+        public JsonResult getRatings(int? studentId)
         {
             var arrRatings = new List<ratingItem>();
             List<Ratings> ratings = db.Ratings.Where(g => g.StudentId == studentId).ToList();

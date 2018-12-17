@@ -21,9 +21,6 @@ namespace dnevnik.Controllers
         public ActionResult Index()
         {
             List <Students> Students = db.Students.ToList();
-            
-            // передаем все объекты в динамическое свойство Books в ViewBag
-            ViewBag.Students = Students;
             // возвращаем представление
             return View();
         }

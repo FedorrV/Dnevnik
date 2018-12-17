@@ -1,6 +1,6 @@
 ﻿@model dnevnik.Models.Lessons
 
-<h2>Добавление новой оценки</h2>
+<h2>Добавить оценку</h2>
 
 <table class="table">
     <tr>
@@ -37,7 +37,7 @@
 
 @using (Html.BeginForm("addRating", "Teacher", FormMethod.Post, new { @class = ".form - control" }))
 {
-    @Html.Hidden("LessonId", (int)ViewBag.lessonId)
+    @Html.Hidden("LessonId", @Model.LessonId)
     <p>
         <label for="listGrades">Ученик(ца)</label><br />
         @Html.DropDownList("StudentId", ViewBag.listStudents as SelectList, new { id = "listGrades" })

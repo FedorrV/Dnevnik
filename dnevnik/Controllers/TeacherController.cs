@@ -105,9 +105,13 @@ namespace dnevnik.Controllers
         }
 
         [HttpGet]
-        public ActionResult deleteStudent(int studentid)
+        public ActionResult deleteStudent(int? studentid)
         {
+            if (studentid == null)
+                return HttpNotFound();
             Students st = db.Students.Find(studentid);
+            if (st == null)
+                return HttpNotFound();
             db.Students.Remove(st);
             db.SaveChanges();
 
@@ -151,14 +155,17 @@ namespace dnevnik.Controllers
         [HttpGet]
         public JsonResult getTeachers(int SubjectId)
         {
-        var arrTeachers = new List<TeacherItem>();
-        List<Specialization> spec = db.Specialization.Where(sp => sp.SubjectId == SubjectId).ToList();
-        for(int i=0;i< spec.Count(); i++)
+            var arrTeachers = new List<TeacherItem>();
+            List<Specialization> spec = db.Specialization.Where(sp => sp.SubjectId == SubjectId).ToList();
+            for (int i = 0; i < spec.Count(); i++)
             {
-                arrTeachers.Add(new TeacherItem { fullname = spec[i].Teachers.lastname+" " + spec[i].Teachers.firstname + " " + spec[i].Teachers.patronymic,
-                                                  TeacherId = spec[i].Teachers.TeacherId });
+                arrTeachers.Add(new TeacherItem
+                {
+                    fullname = spec[i].Teachers.lastname + " " + spec[i].Teachers.firstname + " " + spec[i].Teachers.patronymic,
+                    TeacherId = spec[i].Teachers.TeacherId
+                });
             }
-        return Json(arrTeachers, JsonRequestBehavior.AllowGet);
+            return Json(arrTeachers, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -167,15 +174,15 @@ namespace dnevnik.Controllers
             if (lessonId == null)
                 return HttpNotFound();
 
-            Lessons lesson = db.Lessons.FirstOrDefault(l=>l.LessonId==lessonId);
+            Lessons lesson = db.Lessons.FirstOrDefault(l => l.LessonId == lessonId);
             if (lesson == null)
                 return HttpNotFound();
             List<Students> students = db.Students.Where(s => s.GradeId == lesson.GradeId).ToList();
             var viewList = students.Select(p => new { p.StudentId, Name = $"{p.lastname} {p.firstname} {p.patronymic}" }).ToList();
-            SelectList listStudents = new SelectList(viewList, "StudentId","Name");
+            SelectList listStudents = new SelectList(viewList, "StudentId", "Name");
 
             ViewBag.listStudents = listStudents;
-            ViewBag.lessonId = lessonId;
+            //ViewBag.lessonId = lessonId;
             return View(lesson);
         }
 
@@ -240,9 +247,9 @@ namespace dnevnik.Controllers
         //}
 
         protected override void Dispose(bool disposing)
-    {
-        db.Dispose();
-        base.Dispose(disposing);
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
     }
-}
 }
